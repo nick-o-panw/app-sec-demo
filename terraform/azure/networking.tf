@@ -1,7 +1,7 @@
 resource "azurerm_virtual_network" "example" {
   name                = "terragoat-vn-${var.environment}"
   address_space       = ["10.0.0.0/16"]
-  location            = azurerm_resource_group.example.location
+  location            = eastus
   resource_group_name = azurerm_resource_group.example.name
   tags = {
     git_commit           = "898d5beaec7ffdef6df0d7abecff407362e2a74e"
