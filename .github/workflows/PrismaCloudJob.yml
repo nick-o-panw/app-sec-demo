@@ -1,0 +1,29 @@
+name: Prisma Cloud Github action
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the master branch
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  PrismaCloud-job:
+    permissions: write-all
+    runs-on: ubuntu-latest
+    name: Prisma Cloud
+    env:
+      PRISMA_API_URL: https://api0.prismacloud.io/
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+
+      - name: Run Prisma Cloud 
+        id: prisma-cloud
+        uses: bridgecrewio/checkov-action@master
+        env:
+          PRISMA_API_URL: https://api0.prismacloud.io
+        with:
+          api-key: ${{ secrets.BC_API_KEY }}
