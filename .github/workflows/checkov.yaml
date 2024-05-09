@@ -6,9 +6,9 @@ name: Checkov Github action
 on:
   workflow_dispatch:
   push:
-    branches: [main]
+    
   pull_request:
-    branches: [main]
+    
 
 jobs:
   checkov-job:
